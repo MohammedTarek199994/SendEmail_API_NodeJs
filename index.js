@@ -38,7 +38,7 @@ function sendEmail(to, subject, text, res) {
   });
 }
 app.get("/", (req, res) => {
-  console.log(process.env.GMAIL_PASS);
+  res.send("Email Send API");
 });
 app.post("/email", function (req, res) {
   console.log(req.body);
