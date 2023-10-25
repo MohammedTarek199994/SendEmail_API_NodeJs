@@ -7,7 +7,7 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/email",
       "methods": ["POST", "PUT", "GET", "DELETE"],
       "dest": "/"
     }
