@@ -8,13 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 // Allow requests from a specific domain
-const allowedOrigin = "https://vast-lime-swallow-yoke.cyclic.app";
-app.use(
-  cors({
-    origin: allowedOrigin,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
+app.use(cors({ origin: "*" }));
 
 // Create a transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
