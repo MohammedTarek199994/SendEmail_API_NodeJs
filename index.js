@@ -1,11 +1,12 @@
 const express = require("express");
-const nodemailer = require("nodemailer");
 const app = express();
+const nodemailer = require("nodemailer");
+require("dotenv").config({ path: ".env" });
 app.use(express.json()); // for parsing application/json
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const cors = require('cors');
+const cors = require("cors");
 // Enable CORS for all routes
 app.use(cors());
 
@@ -14,7 +15,7 @@ const transporter = nodemailer.createTransport({
   service: "Gmail", // Use the email service you prefer (e.g., Gmail, SMTP)
   auth: {
     user: "m.naga199994@gmail.com", // Your email address
-    pass: "razwejzulackrdrq", // Your email password
+    pass: process.env.GMAIL_PASS, // Your email password
   },
 });
 
@@ -36,6 +37,9 @@ function sendEmail(to, subject, text, res) {
     }
   });
 }
+app.get("/", (req, res) => {
+  console.log(process.env.GMAIL_PASS);
+});
 app.post("/email", function (req, res) {
   console.log(req.body);
   let name = req.body.name;
